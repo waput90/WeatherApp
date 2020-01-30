@@ -1,6 +1,7 @@
 import request from "./request.c.js";
 
-const submitLocation = async () => {
+const submitLocation = async (e) => {
+    e.preventDefault();
     await request.postLocation();
 }
 

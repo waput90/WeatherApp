@@ -6,11 +6,30 @@ const getIp = () => {
         $.get("https://api.ipify.org?format=json", (res) => {
             if (typeof (res) !== 'undefined' && res != null) {
                 vars.ip(res.ip);
-                console.log(res);
             }
         }).done(() => {
             resolve();
         });
+    });
+}
+
+const getCapitalCities = () => {
+    return new Promise((resolve) => {
+        $.get("https://restcountries.eu/rest/v2/all", (res) => {
+            if (typeof(res) !== 'undefined' && res != null) {
+                let data = vars.country();
+                res.forEach(d => {
+                    data.push({
+                        countryName: d.name,
+                        capital: d.capital
+                    });
+                });
+
+                vars.country.valueHasMutated();
+            }
+        }).done(() => {
+            resolve();
+        })
     });
 }
 
@@ -59,5 +78,6 @@ const getWeather = () => {
 export default {
     getIp,
     postLocation,
-    getWeather
+    getWeather,
+    getCapitalCities
 }

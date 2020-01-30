@@ -3,19 +3,26 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <div class="card card-default">
+    <div class="d-flex justify-content-center">
+            <div class="card card-default mt-5" style="width:18rem">
                 <div class="card-body">
                     <form data-bind="sumbit: events.submitLocation" id="locationForm">
                         @Html.AntiForgeryToken()
                         Candidate Selection App
                         
-                        <input type="text" id="selectize" data-bind="textInput: vars.location" class="form-control" placeholder="Enter location" />
-                        <button class="btn btn-success" type="submit"> Submit</button>
+                        <!-- ko if: vars.country().length < 0-->
+                        <p>Loading city data....</p>
+                        <!-- /ko -->
+                        <!-- ko if: vars.country().length > 0 -->
+                        <select id="select-state" placeholder="Pick a city..." data-bind="options: vars.country(),
+                                                                                        optionsValue: 'capital',
+                                                                                        optionsText: 'capital',
+                                                                                        value: vars.selectedCity">
+                        </select>
+                        <!-- /ko -->
+                        <p>Loading weather information....</p>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -23,6 +30,7 @@
 
 @section Scripts
 {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
     <script src="~/assets/js/app.js"></script>
     <script type="module" src="~/assets/js/main.js"></script>
