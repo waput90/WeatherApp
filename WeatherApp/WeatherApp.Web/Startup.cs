@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WeatherApp.Services;
 
 namespace WeatherApp.Web
 {
@@ -31,7 +32,7 @@ namespace WeatherApp.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.RegisterService();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
