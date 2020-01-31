@@ -11,7 +11,7 @@
                     <!-- ko foreach: vars.weather() -->
                     <h1>CURRENT</h1>
                     <hr>
-                    <h3 data-bind="text: name"></h3>
+                    <h3><!-- ko text: name --><!-- /ko -->, <small data-bind="text: country"></small></h3>
                     <h1 class="tempCel" data-bind="text: tempCel + ' °C'"></h1>
                     <p>High Temp <span data-bind="text: tempMax"></span></p>
                     <p>Low Temp <span data-bind="text: tempMin"></span></p>

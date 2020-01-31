@@ -60,6 +60,7 @@ const postLocation = () => {
                     dt: response.weatherData.dt,
                     id: response.weatherData.id,
                     name: response.weatherData.name,
+                    country: response.weatherData.sys.country,
                     sunrise: response.weatherData.sys.sunrise,
                     sunset: response.weatherData.sys.sunset,
                     humidity: response.weatherData.main.humidity,
@@ -100,7 +101,7 @@ const getWeather = () => {
                 vars.weather.removeAll();
 
                 if (response.weatherData.cod == 404) {
-                    
+
                 }
                 let data = vars.weather();
                 data.push({
@@ -115,6 +116,7 @@ const getWeather = () => {
                     dt: response.weatherData.dt,
                     id: response.weatherData.id,
                     name: response.weatherData.name,
+                    country: response.weatherData.sys.country,
                     sunrise: response.weatherData.sys.sunrise,
                     sunset: response.weatherData.sys.sunset,
                     humidity: response.weatherData.main.humidity,
