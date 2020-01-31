@@ -2,29 +2,78 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
-    <div class="d-flex justify-content-center">
-            <div class="card card-default mt-5" style="width:18rem">
-                <div class="card-body">
-                    <form data-bind="sumbit: events.submitLocation" id="locationForm">
-                        @Html.AntiForgeryToken()
-                        Candidate Selection App
+<div class="container-fluid">
+    <div class="row row-height">
+        <div class="col-md-6 text-center current-wrapper">
+            <div class="p-4">
+                <form id="locationForm">
+                    @Html.AntiForgeryToken()
+                    <!-- ko foreach: vars.weather() -->
+                    <h1>CURRENT</h1>
+                    <hr>
+                    <h3 data-bind="text: name"></h3>
+                    <h1 class="tempCel" data-bind="text: tempCel + ' °C'"></h1>
+                    <p>High Temp <span data-bind="text: tempMax"></span></p>
+                    <p>Low Temp <span data-bind="text: tempMin"></span></p>
+                    <!-- /ko -->
+                    <input type="text" type="submit" data-bind="textInput: $root.vars.location" class="form-control changeLocation" placeholder="Change city...">
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-6 text-center forecast-wrapper">
+            <div class="p-4">
+                <!-- ko foreach: vars.weather() -->
+                    <h1>FORECAST</h1>
+                    <hr>
+                    <div class="float-left text-left today-wrapper">        
+                        <h3>
+                            Today
+                        </h3>
                         
-                        <!-- ko if: vars.country().length < 0-->
-                        <p>Loading city data....</p>
+                        <!-- ko foreach: weathers() -->
+                            <p data-bind="text: main"></p>
+                            <p data-bind="text: description"></p>
                         <!-- /ko -->
-                        <!-- ko if: vars.country().length > 0 -->
-                        <select id="select-state" placeholder="Pick a city..." data-bind="options: vars.country(),
-                                                                                        optionsValue: 'capital',
-                                                                                        optionsText: 'capital',
-                                                                                        value: vars.selectedCity">
-                        </select>
-                        <!-- /ko -->
-                        <p>Loading weather information....</p>
-                    </form>
-                </div>
+                        <p>Humidity <span data-bind="text: humidity + '%'"></span></p>
+                        <p>Wind <span data-bind="text: windspeed + 'kph'"></span></p>
+                    </div>
+                
+                    <!-- ko foreach: weathers() -->
+                    <img data-bind="attr: {src: 'http://openweathermap.org/img/wn/'+ icon +'.png'}">
+                    <!-- /ko -->
+                <!-- /ko -->
+            </div>
         </div>
     </div>
+    @* <div class="d-flex justify-content-center">
+        <div class="card card-default mt-5" style="width:18rem">
+            <div class="card-body">
+                <form data-bind="sumbit: events.submitLocation" id="locationForm">
+                    @Html.AntiForgeryToken()
+                    Weather App
+                    
+                    <!-- ko if: vars.country().length < 0-->
+                    <p>Loading city data....</p>
+                    <!-- /ko -->
+                    <!-- ko if: vars.country().length > 0 -->
+                    <select id="select-state" type="submit" placeholder="Pick a city..." data-bind="options: vars.country(),
+                                                                                    optionsValue: 'capital',
+                                                                                    optionsText: 'capital',
+                                                                                    value: vars.selectedCity">
+                    </select>
+                    <!-- /ko -->
+                    <!-- ko foreach: vars.weather() -->
+                        <!-- ko foreach: weathers() -->
+                        <p data-bind="text: main"></p>
+                        <p data-bind="text: description"></p>
+                        <img data-bind="attr: {src: 'http://openweathermap.org/img/wn/'+icon+'.png'}" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+                        <!-- /ko -->
+                    <!-- /ko -->
+                </form>
+            </div>
+        </div>
+    </div> *@
 </div>
 
 

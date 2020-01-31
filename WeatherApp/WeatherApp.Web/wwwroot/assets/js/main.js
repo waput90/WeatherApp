@@ -5,16 +5,16 @@ app.vm = (() => {
     "use strict";
 
     const init = async () => {
-        console.log("Initialize");
+        // await request.getCapitalCities();
         await request.getIp();
-        //await request.postLocation();
-        await request.getCapitalCities();
-        $('#select-state').selectize();
+        await request.postLocation();
+        // $('#select-state').selectize();
     }
     
     $("#locationForm").on("submit", async function(e) {
         e.preventDefault();
-        //await request.postLocation();
+        //console.log("CHANGED!");
+        await request.getWeather();
     });
 
     const vm = {
