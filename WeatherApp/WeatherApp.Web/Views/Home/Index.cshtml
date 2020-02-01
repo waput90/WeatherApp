@@ -13,8 +13,16 @@
                     <hr>
                     <h3><!-- ko text: name --><!-- /ko -->, <small data-bind="text: country"></small></h3>
                     <h1 class="tempCel" data-bind="text: tempCel + ' °C'"></h1>
-                    <p>High Temp <span data-bind="text: tempMax"></span></p>
-                    <p>Low Temp <span data-bind="text: tempMin"></span></p>
+                    <div class="row">
+                        <div class="col-md-6 text-md-right text-center pr-md-5">
+                            <p> <img src="https://img.icons8.com/office/40/000000/temperature.png"> <span data-bind="text: tempMax"></span> °C</p>
+                            <p> <img src="https://img.icons8.com/ultraviolet/40/000000/temperature.png"> <span data-bind="text: tempMin"></span> °C</p>
+                        </div>
+                        <div class="col-md-6 text-md-left text-center pl-md-5">
+                            <p><img src="https://img.icons8.com/plasticine/100/000000/sunrise.png" width="40"> - <span data-bind="text: sunrise"></span></p>
+                            <p><img src="https://img.icons8.com/plasticine/100/000000/sunset.png" width="40"> - <span data-bind="text: sunset"></span></p>
+                        </div> 
+                    </div>
                     <!-- /ko -->
                     <input type="text" type="submit" data-bind="textInput: $root.vars.location" class="form-control changeLocation" placeholder="Change city...">
                 </form>
@@ -53,39 +61,12 @@
             </div>
         </div>
     </div>
-    @* <div class="d-flex justify-content-center">
-        <div class="card card-default mt-5" style="width:18rem">
-            <div class="card-body">
-                <form data-bind="sumbit: events.submitLocation" id="locationForm">
-                    @Html.AntiForgeryToken()
-                    Weather App
-                    
-                    <!-- ko if: vars.country().length < 0-->
-                    <p>Loading city data....</p>
-                    <!-- /ko -->
-                    <!-- ko if: vars.country().length > 0 -->
-                    <select id="select-state" type="submit" placeholder="Pick a city..." data-bind="options: vars.country(),
-                                                                                    optionsValue: 'capital',
-                                                                                    optionsText: 'capital',
-                                                                                    value: vars.selectedCity">
-                    </select>
-                    <!-- /ko -->
-                    <!-- ko foreach: vars.weather() -->
-                        <!-- ko foreach: weathers() -->
-                        <p data-bind="text: main"></p>
-                        <p data-bind="text: description"></p>
-                        <img data-bind="attr: {src: 'http://openweathermap.org/img/wn/'+icon+'.png'}" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
-                        <!-- /ko -->
-                    <!-- /ko -->
-                </form>
-            </div>
-        </div>
-    </div> *@
 </div>
 
 
 @section Scripts
 {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
     <script src="~/assets/js/app.js"></script>

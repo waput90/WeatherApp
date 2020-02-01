@@ -67,6 +67,8 @@ const postLocation = () => {
                     tempCel: response.weatherData.main.temp,
                     tempMin: response.weatherData.main.temp_min,
                     tempMax: response.weatherData.main.temp_min,
+                    sunrise: moment.unix(response.weatherData.sys.sunrise).format("hh:mm A"),
+                    sunset: moment.unix(response.weatherData.sys.sunset).format("hh:mm A"),
                 });
                 
                 vars.weather.valueHasMutated();
@@ -123,6 +125,8 @@ const getWeather = () => {
                     tempCel: response.weatherData.main.temp,
                     tempMin: response.weatherData.main.temp_min,
                     tempMax: response.weatherData.main.temp_min,
+                    sunrise: moment.unix(response.weatherData.sys.sunrise).format("hh:mm A"),
+                    sunset: moment.unix(response.weatherData.sys.sunset).format("hh:mm A"),
                 });
                 
                 vars.weather.valueHasMutated();
