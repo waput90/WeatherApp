@@ -8,7 +8,7 @@ namespace WeatherApp.Common.Helpers
 {
     public static class HttpRequestHelper
     {
-        public static async Task<string> Request(string baseUrl, string route, string key, HttpType type)
+        public static async Task<string> Request(string baseUrl, string route, HttpType type)
         {
             try
             {
@@ -22,14 +22,9 @@ namespace WeatherApp.Common.Helpers
 
                     switch (type)
                     {
-                        case HttpType.GET_IP:
+                        case HttpType.GET:
                             {
                                 response = await client.GetAsync($"{baseUrl}{route}");
-                                break;
-                            }
-                        case HttpType.GET_WEATHER:
-                            {
-                                response = await client.GetAsync($"{baseUrl}{route}{key}");
                                 break;
                             }
                     }

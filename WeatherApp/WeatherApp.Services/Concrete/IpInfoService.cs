@@ -25,7 +25,7 @@ namespace WeatherApp.Services.Concrete
             {
                 if (!string.IsNullOrWhiteSpace(ip))
                 {
-                    string request = await HttpRequestHelper.Request(BaseUrl, $"/{ip}/geo", string.Empty, HttpType.GET_IP);
+                    string request = await HttpRequestHelper.Request(BaseUrl, $"/{ip}/geo", HttpType.GET);
                     if (!string.IsNullOrWhiteSpace(request))
                     {
                         var ipInfo = JsonConvert.DeserializeObject<IpInfoResponseModel>(request);

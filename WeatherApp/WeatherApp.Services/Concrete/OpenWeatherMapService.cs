@@ -25,7 +25,7 @@ namespace WeatherApp.Services.Concrete
         {
             try
             {
-                string request = await HttpRequestHelper.Request(BaseUrl, $"/data/2.5/weather?q={city}&appid=",appId, HttpType.GET_WEATHER);
+                string request = await HttpRequestHelper.Request(BaseUrl, $"/data/2.5/weather?q={city}&appid={appId}&units=metric", HttpType.GET);
                 if (!string.IsNullOrWhiteSpace(request))
                 {
                     var openWeather = JsonConvert.DeserializeObject<OpenWeatherMapResponseModel>(request);
