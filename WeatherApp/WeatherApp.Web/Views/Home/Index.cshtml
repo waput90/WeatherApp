@@ -32,15 +32,22 @@
                         </h3>
                         
                         <!-- ko foreach: weathers() -->
-                            <p data-bind="text: main"></p>
-                            <p data-bind="text: description"></p>
+                            <!-- ko if: $index() == 0 -->
+                            <p>
+                                <!-- ko text: main --><!-- /ko -->
+                                <br>
+                                <small data-bind="text: description"></small>
+                            </p>
+                            <!-- /ko -->
                         <!-- /ko -->
                         <p>Humidity <span data-bind="text: humidity + '%'"></span></p>
                         <p>Wind <span data-bind="text: windspeed + 'kph'"></span></p>
                     </div>
                 
                     <!-- ko foreach: weathers() -->
-                    <img data-bind="attr: {src: 'http://openweathermap.org/img/wn/'+ icon +'.png'}">
+                        <!-- ko if: $index() == 0 -->
+                        <img data-bind="attr: {src: 'http://openweathermap.org/img/wn/'+ icon +'.png'}">
+                        <!-- /ko -->
                     <!-- /ko -->
                 <!-- /ko -->
             </div>
