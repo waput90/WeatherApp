@@ -536,9 +536,11 @@ body {
   width: 50%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #c99e68;
+  /* border-bottom: 1px solid #c99e68; */
+  border-bottom: 1px solid #dcccdc;
   color: white;
   margin: 10px;
+  border-radius: 0px;
 }
 
 .changeLocation::placeholder {
@@ -553,7 +555,8 @@ body {
 }
 
 .current-wrapper {
-  background: #c3a585;
+  /* background: #c3a585; */
+  background: linear-gradient(120deg, #ffffff, #3e3c86);
   color: white;
   padding: 20px;
 }
