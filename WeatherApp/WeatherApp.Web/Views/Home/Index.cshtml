@@ -2,6 +2,11 @@
     ViewData["Title"] = "Weather App";
 }
 
+@section Styles 
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.css">
+}
+
 <div class="container-fluid">
     @* add loader here *@
     @{await Html.RenderPartialAsync("~/Views/Home/_PartialLoaderWrapper.cshtml");}
@@ -22,5 +27,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
     <script src="~/assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.js"></script>
     <script type="module" src="~/assets/js/main.js"></script>
 }

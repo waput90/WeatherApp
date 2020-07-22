@@ -1,5 +1,6 @@
 import request from './components/request.c.js';
 import { vars } from './components/variable.c.js';
+import helper from './components/helpers.c.js';
 
 app.vm = (() => {
     "use strict";
@@ -8,7 +9,14 @@ app.vm = (() => {
         // await request.getCapitalCities();
         await request.getIp();
         await request.postLocation();
-        $(".loader-wrapper").css("display", "none");
+        request.getCities().then(response => {
+            let cities = [];
+            response.forEach(c => {
+                cities.push(c.capital);
+            });
+            // helper.loadNewSource(".changeLocation", cities);
+            $(".loader-wrapper").css("display", "none");
+        })
         // $('#select-state').selectize();
     }
     

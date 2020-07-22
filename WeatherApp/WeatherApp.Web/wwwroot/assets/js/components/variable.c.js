@@ -4,5 +4,6 @@ export let vars = {
     location: ko.observable(),
     isFound: ko.observable(false),
     weather: ko.observableArray([]),
-    weatherList: ko.pureComputed(() => vars.weather())
+    weatherList: ko.pureComputed(() => vars.weather()),
+    cityList: ko.observableArray([]),
 };

@@ -151,9 +151,26 @@ const getWeather = () => {
     });
 }
 
+const getCities = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "https://restcountries.eu/rest/v2/all",
+            method: "get",
+            dataType: "json",
+            success: data => {
+                resolve(data);
+            },
+            error: err => {
+                reject(err);
+            }
+        })
+    })
+}
+
 export default {
     getIp,
     postLocation,
     getWeather,
-    getCapitalCities
+    getCapitalCities,
+    getCities
 }
