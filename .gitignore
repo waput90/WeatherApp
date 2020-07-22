@@ -93,3 +93,13 @@ WeatherApp/.vs/WeatherApp/v16/Server/sqlite3/db.lock
 WeatherApp/.vs/WeatherApp/v16/Server/sqlite3/storage.ide
 WeatherApp/.vs/WeatherApp/v16/Server/sqlite3/storage.ide-shm
 WeatherApp/.vs/WeatherApp/v16/Server/sqlite3/storage.ide-wal
+WeatherApp/WeatherApp.Commons/obj/Debug/netcoreapp2.2/.NETCoreApp,Version=v2.2.AssemblyAttributes.cs
+WeatherApp/WeatherApp.Commons/obj/Debug/netcoreapp2.2/WeatherApp.Commons.csproj.CoreCompileInputs.cache
+WeatherApp/WeatherApp.Commons/obj/project.nuget.cache
+WeatherApp/WeatherApp.Services/obj/Debug/netcoreapp2.2/.NETCoreApp,Version=v2.2.AssemblyAttributes.cs
+WeatherApp/WeatherApp.Services/obj/Debug/netcoreapp2.2/WeatherApp.Services.csproj.CoreCompileInputs.cache
+WeatherApp/WeatherApp.Services/obj/project.nuget.cache
+WeatherApp/WeatherApp.Web/obj/Debug/netcoreapp2.2/.NETCoreApp,Version=v2.2.AssemblyAttributes.cs
+WeatherApp/WeatherApp.Web/obj/Debug/netcoreapp2.2/WeatherApp.Web.csproj.CoreCompileInputs.cache
+WeatherApp/WeatherApp.Web/obj/Debug/netcoreapp2.2/WeatherApp.Web.genruntimeconfig.cache
+WeatherApp/WeatherApp.Web/obj/project.nuget.cache
