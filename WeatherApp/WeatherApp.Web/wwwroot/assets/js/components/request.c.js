@@ -103,41 +103,47 @@ const getWeather = () => {
                 vars.weather.removeAll();
 
                 if (response.weatherData.cod == 404) {
-
-                }
-                let data = vars.weather();
-                data.push({
-                    lat: response.weatherData.coord.lat,
-                    lon: response.weatherData.coord.lon,
-                    weathers: ko.observableArray(response.weatherData.weather),
-                    base: response.weatherData.base,
-                    visibility: response.weatherData.visibility,
-                    windspeed: response.weatherData.wind.speed,
-                    winddeg: response.weatherData.wind.deg,
-                    clouds: response.weatherData.all,
-                    dt: response.weatherData.dt,
-                    id: response.weatherData.id,
-                    name: response.weatherData.name,
-                    country: response.weatherData.sys.country,
-                    sunrise: response.weatherData.sys.sunrise,
-                    sunset: response.weatherData.sys.sunset,
-                    humidity: response.weatherData.main.humidity,
-                    tempCel: response.weatherData.main.temp,
-                    tempMin: response.weatherData.main.temp_min,
-                    tempMax: response.weatherData.main.temp_min,
-                    sunrise: moment.unix(response.weatherData.sys.sunrise).format("hh:mm A"),
-                    sunset: moment.unix(response.weatherData.sys.sunset).format("hh:mm A"),
-                });
-                
-                vars.weather.valueHasMutated();
-                
-                response.weatherData.weather.forEach(i => {
+                    // weather coordinates not found
                     $(".forecast-wrapper").css({            
-                        "background": `url(${helper.backgroundHelper(i.main)})`,
-                        "background-size": "cover",
+                        "background": `url(../assets/img/no-weather-found.jpg)`,
+                        "background-size": "contain",
                         "background-repeat": "no-repeat",
                     });
-                });
+                }
+                else {
+                    let data = vars.weather();
+                    data.push({
+                        lat: response.weatherData.coord.lat,
+                        lon: response.weatherData.coord.lon,
+                        weathers: ko.observableArray(response.weatherData.weather),
+                        base: response.weatherData.base,
+                        visibility: response.weatherData.visibility,
+                        windspeed: response.weatherData.wind.speed,
+                        winddeg: response.weatherData.wind.deg,
+                        clouds: response.weatherData.all,
+                        dt: response.weatherData.dt,
+                        id: response.weatherData.id,
+                        name: response.weatherData.name,
+                        country: response.weatherData.sys.country,
+                        sunrise: response.weatherData.sys.sunrise,
+                        sunset: response.weatherData.sys.sunset,
+                        humidity: response.weatherData.main.humidity,
+                        tempCel: response.weatherData.main.temp,
+                        tempMin: response.weatherData.main.temp_min,
+                        tempMax: response.weatherData.main.temp_min,
+                        sunrise: moment.unix(response.weatherData.sys.sunrise).format("hh:mm A"),
+                        sunset: moment.unix(response.weatherData.sys.sunset).format("hh:mm A"),
+                    });
+                    
+                    vars.weather.valueHasMutated();
+                    response.weatherData.weather.forEach(i => {
+                        $(".forecast-wrapper").css({            
+                            "background": `url(${helper.backgroundHelper(i.main)})`,
+                            "background-size": "cover",
+                            "background-repeat": "no-repeat",
+                        });
+                    });
+                }
             }
         }).done(() => {
             resolve();
